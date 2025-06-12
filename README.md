@@ -6,7 +6,7 @@ Aplikasi web interaktif untuk enkripsi dan dekripsi menggunakan Caesar Cipher de
 
 - **Enkripsi & Dekripsi**: Mudah beralih antara mode encrypt dan decrypt
 - **Shift Slider**: Kontrol shift value dari 1-25 dengan slider interaktif
-- **Real-time Processing**: Hasil langsung terlihat saat mengetik
+- **Button-based Processing**: Hasil muncul setelah klik tombol (tidak real-time)
 - **Brute Force Analysis**: Coba semua kemungkinan shift untuk dekripsi
 - **Copy to Clipboard**: Salin hasil dengan satu klik
 - **Responsive Design**: Tampil sempurna di desktop dan mobile
@@ -32,7 +32,7 @@ Aplikasi akan berjalan di: `http://localhost:5000`
 ## 🎮 Keyboard Shortcuts
 
 - `Ctrl + E`: Switch ke mode Encrypt
-- `Ctrl + D`: Switch ke mode Decrypt  
+- `Ctrl + D`: Switch ke mode Decrypt
 - `Ctrl + Enter`: Process text
 - `Ctrl + B`: Brute force analysis
 - `Ctrl + L`: Clear all text
@@ -49,7 +49,7 @@ Aplikasi akan berjalan di: `http://localhost:5000`
 Jika Anda memiliki teks terenkripsi dan tidak tahu shift value-nya:
 1. Masukkan teks terenkripsi
 2. Klik tombol "Brute Force"
-3. Lihat semua kemungkinan dekripsi
+3. Lihat semua kemungkinan dekripsi dengan label "Key X"
 4. Klik hasil yang paling masuk akal
 
 ## 📁 Struktur Project
@@ -64,6 +64,8 @@ caesar-cipher/
 ├── static/
 │   ├── style.css      # CSS styling
 │   └── script.js      # JavaScript functionality
+├── test_caesar.py     # Unit tests
+├── CHANGELOG.md       # Version history
 └── README.md          # Documentation
 ```
 
@@ -81,7 +83,7 @@ Caesar Cipher adalah salah satu teknik enkripsi tertua dan paling sederhana. Tek
 
 **Contoh dengan shift 3:**
 - A → D
-- B → E  
+- B → E
 - C → F
 - ...
 - X → A
@@ -95,6 +97,7 @@ Caesar Cipher adalah salah satu teknik enkripsi tertua dan paling sederhana. Tek
 - **Input Validation**: Validasi input untuk mencegah error
 - **Error Handling**: Penanganan error yang user-friendly
 - **Loading States**: Indikator loading untuk feedback visual
+- **Mode Switching**: Input otomatis clear saat switch encrypt/decrypt
 
 ## 🐛 Troubleshooting
 
