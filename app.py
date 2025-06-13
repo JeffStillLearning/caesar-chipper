@@ -45,21 +45,28 @@ def process_text():
 
 @app.route('/brute_force', methods=['POST'])
 def brute_force():
-    """Brute force decryption - try all possible shifts"""
+    """Brute force analysis - try all possible shifts for encrypt or decrypt"""
     try:
         data = request.get_json()
         text = data.get('text', '')
-        
+        mode = data.get('mode', 'decrypt')  # Default to decrypt for backward compatibility
+
         if not text:
             return jsonify({'error': 'Text cannot be empty'}), 400
-        
-        results = cipher.brute_force_decrypt(text)
-        
+
+        if mode == 'encrypt':
+            # For encrypt mode, show all possible encryptions
+            results = cipher.brute_force_encrypt(text)
+        else:
+            # For decrypt mode, show all possible decryptions
+            results = cipher.brute_force_decrypt(text)
+
         return jsonify({
             'success': True,
-            'results': results
+            'results': results,
+            'mode': mode
         })
-        
+
     except Exception as e:
         return jsonify({'error': 'An error occurred: ' + str(e)}), 500
 

@@ -174,18 +174,18 @@ async function autoProcess() {
     }
 }
 
-// Brute Force Decryption
+// Brute Force Analysis
 async function bruteForceDecrypt() {
     const text = inputText.value.trim();
-    
+
     if (!text) {
-        showToast('Please enter some text for brute force decryption', 'error');
+        showToast(`Please enter some text for brute force ${currentMode === 'encrypt' ? 'encryption' : 'decryption'}`, 'error');
         inputText.focus();
         return;
     }
-    
+
     showLoading(true);
-    
+
     try {
         const response = await fetch('/brute_force', {
             method: 'POST',
@@ -193,19 +193,20 @@ async function bruteForceDecrypt() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                text: text
+                text: text,
+                mode: currentMode  // Send current mode to backend
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (data.success) {
-            displayBruteForceResults(data.results);
-            showToast('Brute force analysis complete! 🔍', 'success');
+            displayBruteForceResults(data.results, currentMode);
+            showToast(`Brute force ${currentMode} analysis complete! 🔍`, 'success');
         } else {
             showToast(data.error || 'An error occurred', 'error');
         }
-        
+
     } catch (error) {
         console.error('Error:', error);
         showToast('Network error. Please try again.', 'error');
@@ -215,31 +216,47 @@ async function bruteForceDecrypt() {
 }
 
 // Display Brute Force Results
-function displayBruteForceResults(results) {
+function displayBruteForceResults(results, mode) {
     bruteForceList.innerHTML = '';
-    
-    results.forEach(([shift, decrypted]) => {
+
+    const isEncryptMode = mode === 'encrypt';
+    const keyLabel = isEncryptMode ? 'Shift' : 'Key';
+    const hintText = isEncryptMode ? 'encrypt shift' : 'decrypt key';
+
+    // Update title and explanation based on mode
+    const titleElement = document.getElementById('bruteForceTitle');
+    const explanationElement = document.getElementById('bruteForceExplanation');
+
+    if (isEncryptMode) {
+        titleElement.textContent = 'All Possible Encryptions:';
+        explanationElement.textContent = 'Shows how your text would look encrypted with different shifts. Click to use.';
+    } else {
+        titleElement.textContent = 'All Possible Decryptions:';
+        explanationElement.textContent = 'Shows possible original text with different decrypt keys. Click to use.';
+    }
+
+    results.forEach(([shift, result]) => {
         const item = document.createElement('div');
         item.className = 'brute-force-item';
         item.innerHTML = `
-            <div class="shift-badge">Key ${shift}</div>
-            <div class="decrypted-text" style="flex: 1; font-family: monospace;">${decrypted}</div>
+            <div class="shift-badge">${keyLabel} ${shift}</div>
+            <div class="decrypted-text" style="flex: 1; font-family: monospace;">${result}</div>
             <div class="hint-text" style="font-size: 0.8em; color: #666; margin-left: 10px;">
-                (decrypt key: ${shift})
+                (${hintText}: ${shift})
             </div>
         `;
-        
+
         // Click to use this result
         item.addEventListener('click', () => {
-            outputText.value = decrypted;
+            outputText.value = result;
             shiftSlider.value = shift;
             updateShiftValue();
-            showToast(`Applied decrypt key ${shift} - Result copied to output`, 'success');
+            showToast(`Applied ${hintText} ${shift} - Result copied to output`, 'success');
         });
-        
+
         bruteForceList.appendChild(item);
     });
-    
+
     bruteForceResults.style.display = 'block';
     bruteForceResults.scrollIntoView({ behavior: 'smooth' });
 }

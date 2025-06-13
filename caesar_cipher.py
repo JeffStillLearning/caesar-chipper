@@ -97,3 +97,23 @@ class CaesarCipher:
             results.append((shift, decrypted))
 
         return results
+
+    def brute_force_encrypt(self, text):
+        """
+        Try all possible shifts to encrypt text
+
+        Args:
+            text (str): Text to encrypt
+
+        Returns:
+            list: List of tuples (shift, encrypted_text)
+            where shift represents the encrypt shift used
+        """
+        results = []
+
+        # Try all possible encrypt shifts from 1 to 25
+        for shift in range(1, 26):
+            encrypted = self.encrypt(text, shift)
+            results.append((shift, encrypted))
+
+        return results
