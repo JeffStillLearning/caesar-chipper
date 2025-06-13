@@ -222,10 +222,10 @@ function displayBruteForceResults(results) {
         const item = document.createElement('div');
         item.className = 'brute-force-item';
         item.innerHTML = `
-            <div class="shift-badge">Key ${shift}</div>
+            <div class="shift-badge">Shift ${shift}</div>
             <div class="decrypted-text" style="flex: 1; font-family: monospace;">${decrypted}</div>
             <div class="hint-text" style="font-size: 0.8em; color: #666; margin-left: 10px;">
-                (decrypt key: ${shift})
+                (encrypt shift: ${shift})
             </div>
         `;
         
@@ -234,7 +234,7 @@ function displayBruteForceResults(results) {
             outputText.value = decrypted;
             shiftSlider.value = shift;
             updateShiftValue();
-            showToast(`Applied decrypt key ${shift} - Result copied to output`, 'success');
+            showToast(`Applied shift ${shift} - Result copied to output`, 'success');
         });
         
         bruteForceList.appendChild(item);

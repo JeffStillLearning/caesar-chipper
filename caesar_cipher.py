@@ -81,17 +81,30 @@ class CaesarCipher:
     def brute_force_decrypt(self, text):
         """
         Try all possible shifts to decrypt text
-        
+        Shows results as if they were encrypted with that shift value
+
         Args:
             text (str): Text to decrypt
-            
+
         Returns:
-            list: List of tuples (shift, decrypted_text)
+            list: List of tuples (encrypt_shift, decrypted_text)
+            where encrypt_shift represents the original encryption shift
         """
         results = []
-        
-        for shift in range(1, 26):
-            decrypted = self.decrypt(text, shift)
-            results.append((shift, decrypted))
-            
+
+        # Try all possible decrypt keys from 1 to 25
+        for decrypt_key in range(1, 26):
+            decrypted = self.decrypt(text, decrypt_key)
+            # Convert decrypt key to equivalent encrypt shift
+            # If we decrypt with key X, it means original was encrypted with shift X
+            # But we want to show it as "this would be the result if encrypted with shift Y"
+            # where Y = 26 - X (the reverse operation)
+            encrypt_shift = (26 - decrypt_key) % 26
+            if encrypt_shift == 0:
+                encrypt_shift = 26
+            results.append((encrypt_shift, decrypted))
+
+        # Sort by encrypt_shift for better display
+        results.sort(key=lambda x: x[0])
+
         return results
