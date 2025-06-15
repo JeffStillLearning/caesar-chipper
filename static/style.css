@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 25%, #f8b500 50%, #ff6b9d 75%, #ff9ff3 100%);
     background-attachment: fixed;
     min-height: 100vh;
     color: #333;
@@ -25,9 +25,10 @@ body::before {
     width: 100%;
     height: 100%;
     background-image:
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 159, 243, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(248, 181, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 60% 60%, rgba(196, 69, 105, 0.3) 0%, transparent 50%);
     animation: float 20s ease-in-out infinite;
     z-index: -1;
 }
@@ -60,7 +61,7 @@ body::before {
 
 .logo i {
     font-size: 3rem;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background: linear-gradient(45deg, #ff6b9d, #ff9ff3, #c44569, #f8b500, #ff6b9d);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -70,7 +71,7 @@ body::before {
 }
 
 .header h1 {
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background: linear-gradient(45deg, #ff6b9d, #ff9ff3, #c44569, #f8b500, #ff6b9d);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -164,10 +165,10 @@ body::before {
 }
 
 .mode-btn.active {
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
     border-color: rgba(255,255,255,0.6);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
     transform: translateY(-2px);
 }
 
@@ -213,10 +214,10 @@ textarea::placeholder {
 
 textarea:focus {
     outline: none;
-    border-color: #4ecdc4;
+    border-color: #ff9ff3;
     box-shadow:
-        0 0 0 3px rgba(78, 205, 196, 0.2),
-        0 8px 25px rgba(0,0,0,0.1);
+        0 0 0 3px rgba(255, 159, 243, 0.3),
+        0 8px 25px rgba(255, 107, 157, 0.2);
     background: rgba(255,255,255,0.15);
     transform: translateY(-2px);
 }
@@ -238,14 +239,14 @@ textarea:focus {
 }
 
 #shiftValue {
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 700;
     min-width: 40px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
     border: 2px solid rgba(255,255,255,0.3);
     font-size: 1.1rem;
 }
@@ -267,10 +268,10 @@ textarea:focus {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     cursor: pointer;
     box-shadow:
-        0 4px 15px rgba(255, 107, 107, 0.4),
+        0 4px 15px rgba(255, 107, 157, 0.5),
         0 0 0 3px rgba(255,255,255,0.3);
     border: 2px solid white;
     transition: all 0.3s ease;
@@ -279,7 +280,7 @@ textarea:focus {
 #shiftSlider::-webkit-slider-thumb:hover {
     transform: scale(1.1);
     box-shadow:
-        0 6px 20px rgba(255, 107, 107, 0.5),
+        0 6px 20px rgba(255, 107, 157, 0.6),
         0 0 0 5px rgba(255,255,255,0.4);
 }
 
@@ -287,7 +288,9 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-weight: 500;
 }
 
 /* Action Buttons */
@@ -337,21 +340,21 @@ textarea:focus {
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
 }
 
 .btn.secondary {
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
-    color: #333;
-    box-shadow: 0 8px 25px rgba(168, 237, 234, 0.4);
+    background: linear-gradient(135deg, #ff9ff3, #fed6e3);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 159, 243, 0.4);
 }
 
 .btn.tertiary {
-    background: linear-gradient(135deg, #d299c2, #fef9d7);
-    color: #333;
-    box-shadow: 0 8px 25px rgba(210, 153, 194, 0.4);
+    background: linear-gradient(135deg, #c44569, #ff6b9d);
+    color: white;
+    box-shadow: 0 8px 25px rgba(196, 69, 105, 0.4);
 }
 
 /* Output Section */
@@ -362,10 +365,12 @@ textarea:focus {
 .output-group label {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-weight: 500;
-    color: #555;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.05rem;
 }
 
 .output-container {
@@ -384,7 +389,7 @@ textarea:focus {
     position: absolute;
     right: 15px;
     top: 15px;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
     border: 2px solid rgba(255,255,255,0.3);
     border-radius: 12px;
@@ -395,9 +400,9 @@ textarea:focus {
 }
 
 .copy-btn:hover {
-    background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
+    background: linear-gradient(135deg, #ff9ff3, #ff6b9d);
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
 }
 
 /* Brute Force Results */
@@ -410,7 +415,9 @@ textarea:focus {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-    color: #555;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    font-weight: 600;
 }
 
 .brute-force-list {
@@ -463,14 +470,14 @@ textarea:focus {
 }
 
 .shift-badge {
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 700;
     min-width: 50px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
     border: 2px solid rgba(255,255,255,0.3);
     font-size: 0.9rem;
 }
@@ -520,13 +527,16 @@ textarea:focus {
     top: 20px;
     right: 20px;
     padding: 15px 20px;
-    background: #28a745;
+    background: linear-gradient(135deg, #ff6b9d, #ff9ff3);
     color: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     transform: translateX(400px);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
 }
 
 .toast.show {
@@ -534,11 +544,11 @@ textarea:focus {
 }
 
 .toast.error {
-    background: #dc3545;
+    background: linear-gradient(135deg, #c44569, #ff6b9d);
 }
 
 .toast.info {
-    background: #17a2b8;
+    background: linear-gradient(135deg, #ff9ff3, #c44569);
 }
 
 /* Footer */
